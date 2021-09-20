@@ -8,7 +8,7 @@ import {
 } from "react-awesome-query-builder";
 import moment from "moment";
 import ru_RU from "antd/lib/locale-provider/ru_RU";
-import { ruRU } from "@material-ui/core/locale";
+import { viVN } from "@mui/material/locale";
 
 import AntdConfig from "react-awesome-query-builder/config/antd";
 import AntdWidgets from "react-awesome-query-builder/components/widgets/antd";
@@ -181,7 +181,7 @@ export default (skin: string) => {
     locale: {
       moment: "ru",
       antd: ru_RU,
-      material: ruRU,
+      material: viVN,
     },
     valueLabel: "Value",
     valuePlaceholder: "Value",

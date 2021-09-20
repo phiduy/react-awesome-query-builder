@@ -5,13 +5,15 @@
 
 [![Open in codesandbox.io](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/ukrbublik/react-awesome-query-builder/tree/master/sandbox?file=/src/demo/config_simple.tsx)
 
+Hi guys, this is just my personal upgrade for material widgets to v5. Every document and idea of the package is here [react-awesome-query-builder](https://ukrbublik.github.io/react-awesome-query-builder)
+
 User-friendly React component to build queries.
 
 Inspired by [jQuery QueryBuilder](http://querybuilder.js.org/)
 
 Using awesome [Ant Design](https://ant.design/) v4 for widgets
 
-Now [Material-UI](https://material-ui.com/) is also supported!
+Now [Material-UI](https://mui.com) v5 is now available!
 
 [Demo page](https://ukrbublik.github.io/react-awesome-query-builder)
 
@@ -44,7 +46,7 @@ Now [Material-UI](https://material-ui.com/) is also supported!
 ## Getting started
 Install: 
 ```
-npm i react-awesome-query-builder --save
+npm i react-awesome-query-builder-mui@v5 --save
 ```
 
 For AntDesign widgets only:
@@ -52,9 +54,9 @@ For AntDesign widgets only:
 npm i antd --save
 ```
 
-For Material-UI widgets only:
+For Material-UI widgets v5 only:
 ```
-npm i @material-ui/core @material-ui/lab @material-ui/icons @material-ui/pickers material-ui-confirm --save
+npm i @mui/material @mui/lab @mui/icons-material --save
 ```
 
 See [basic usage](#usage) for minimum code example. 

@@ -11,7 +11,7 @@ import loadedInitValue from "./init_value";
 import loadedInitLogic from "./init_logic";
 const stringify = JSON.stringify;
 const {queryBuilderFormat, jsonLogicFormat, queryString, mongodbFormat, sqlFormat, getTree, checkTree, loadTree, uuid, loadFromJsonLogic} = Utils;
-const preStyle = { backgroundColor: "darkgrey", margin: "10px", padding: "10px" };
+const preStyle = { backgroundColor: "darkgrey", margin: "10px", padding: "10px", overflowX: "scroll" };
 const preErrorStyle = { backgroundColor: "lightpink", margin: "10px", padding: "10px" };
 
 const emptyInitValue: JsonTree = {"id": uuid(), "type": "group"};

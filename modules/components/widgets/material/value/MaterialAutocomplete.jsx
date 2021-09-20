@@ -1,20 +1,21 @@
 import React from "react";
 import omit from "lodash/omit";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import Autocomplete, { createFilterOptions } from "@material-ui/lab/Autocomplete";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Chip from "@material-ui/core/Chip";
-import Checkbox from "@material-ui/core/Checkbox";
-import { makeStyles } from "@material-ui/core/styles";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+
+import Autocomplete from "@mui/lab/Autocomplete";
+import CircularProgress from "@mui/material/CircularProgress";
+import Chip from "@mui/material/Chip";
+import Checkbox from "@mui/material/Checkbox";
+import { makeStyles } from "@mui/styles";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 import useListValuesAutocomplete from "../../../../hooks/useListValuesAutocomplete";
 
 const nonCheckedIcon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
-const defaultFilterOptions = createFilterOptions();
+// const defaultFilterOptions = createFilterOptions();
 const emptyArray = [];
 
 export default (props) => {
@@ -64,8 +65,8 @@ export default (props) => {
   const value = hasValue ? selectedValue : (multiple ? emptyArray : null);
   
   const filterOptions = (options, params) => {
-    const filtered = defaultFilterOptions(options, params);
-    const extended = extendOptions(filtered, params);
+    // const filtered = defaultFilterOptions(options, params);
+    const extended = extendOptions(options, params);
     return extended;
   };
 
@@ -142,6 +143,7 @@ export default (props) => {
   return (
     <FormControl fullWidth={fullWidth}>
       <Autocomplete
+        filterSelectedOptions
         disableCloseOnSelect={multiple}
         fullWidth={fullWidth}
         multiple={multiple}

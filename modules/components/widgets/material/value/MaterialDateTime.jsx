@@ -1,6 +1,6 @@
 import React from "react";
-import { DateTimePicker, KeyboardDateTimePicker } from "@material-ui/pickers";
-import FormControl from "@material-ui/core/FormControl";
+import { DateTimePicker, MobileDateTimePicker } from "@mui/lab";
+import FormControl from "@mui/material/FormControl";
 
 export default (props) => {
   const {value, setValue, use12Hours, readonly, placeholder, dateFormat, timeFormat, valueFormat, customProps, useKeyboard} = props;
@@ -13,7 +13,7 @@ export default (props) => {
     setValue(formatSingleValue(value));
   };
 
-  const Picker = useKeyboard ? KeyboardDateTimePicker : DateTimePicker;
+  const Picker = useKeyboard ? MobileDateTimePicker : DateTimePicker;
   const dateTimeFormat = dateFormat + " " + timeFormat;
   
   return (

@@ -1,78 +1,75 @@
-import React from "react";
-import IconButton from "@material-ui/core/IconButton";
-import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
-import Popover from "@material-ui/core/Popover";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react"
+import IconButton from "@mui/material/IconButton"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import Popover from "@mui/material/Popover"
+import Radio from "@mui/material/Radio"
+import RadioGroup from "@mui/material/RadioGroup"
+import FormControlLabel from "@mui/material/FormControlLabel"
+import FormControl from "@mui/material/FormControl"
+import FormLabel from "@mui/material/FormLabel"
+import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    padding: theme.spacing(1),
-  },
-}));
+    padding: theme.spacing(1)
+  }
+}))
 
-export default ({ valueSources, valueSrc, title, setValueSrc, readonly}) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const classes = useStyles();
-
+export default ({ valueSources, valueSrc, title, setValueSrc, readonly }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const classes = useStyles()
 
   const handleOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const toggleOpenClose = (event) => {
-    anchorEl ? handleClose() : handleOpen(event);
-  };
+    anchorEl ? handleClose() : handleOpen(event)
+  }
 
-  const handleChange = e => {
-    if (e.target.value === undefined)
-      return;
-    setValueSrc(e.target.value);
-    handleClose();
-  };
+  const handleChange = (e) => {
+    if (e.target.value === undefined) return
+    setValueSrc(e.target.value)
+    handleClose()
+  }
 
-  const renderOptions = (valueSources) => (
+  const renderOptions = (valueSources) =>
     valueSources.map(([srcKey, info]) => (
-      <FormControlLabel 
-        key={srcKey} 
-        value={srcKey} 
-        checked={valueSrc == srcKey || !valueSrc && srcKey == "value"} 
-        control={<Radio />} 
+      <FormControlLabel
+        key={srcKey}
+        value={srcKey}
+        checked={valueSrc == srcKey || (!valueSrc && srcKey == "value")}
+        control={<Radio />}
         label={info.label}
       />
     ))
-  );
 
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl)
 
   return (
     <div>
       <IconButton size="small" onClick={toggleOpenClose}>
-        <ExpandMoreSharpIcon />
+        <ExpandMoreIcon />
       </IconButton>
-    
-      <Popover    
+
+      <Popover
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "left",
+          horizontal: "left"
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "left",
+          horizontal: "left"
         }}
         onClose={handleClose}
         classes={{
-          paper: classes.paper,
+          paper: classes.paper
         }}
         disablePortal
       >
@@ -84,5 +81,5 @@ export default ({ valueSources, valueSrc, title, setValueSrc, readonly}) => {
         </FormControl>
       </Popover>
     </div>
-  );
-};
+  )
+}

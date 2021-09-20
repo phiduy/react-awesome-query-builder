@@ -1,7 +1,7 @@
 import React from "react";
-import { TimePicker, KeyboardTimePicker } from "@material-ui/pickers";
+import { TimePicker, MobileTimePicker } from "@mui/lab";
 import moment from "moment";
-import FormControl from "@material-ui/core/FormControl";
+import FormControl from "@mui/material/FormControl";
 
 export default (props) => {
   const {value, setValue, use12Hours, readonly, placeholder, timeFormat, valueFormat, customProps, useKeyboard} = props;
@@ -14,7 +14,7 @@ export default (props) => {
     setValue(formatSingleValue(value));
   };
 
-  const Picker = useKeyboard ? KeyboardTimePicker : TimePicker;
+  const Picker = useKeyboard ? MobileTimePicker : TimePicker;
   const hasSeconds = timeFormat.indexOf(":ss") != -1;
   const timeValue = value ? moment(value, timeFormat) : null;
 
