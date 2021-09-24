@@ -37,7 +37,8 @@ export default ({listValues, value, setValue, allowCustomValues, readonly, place
 
   return (
     <FormControl>
-      <Select multiple
+      <Select 
+        multiple
         autoWidth
         displayEmpty
         label={!readonly ? placeholder : ""}

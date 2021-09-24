@@ -1,5 +1,5 @@
 {
-  "name": "react-awesome-query-builder",
+  "name": "react-awesome-query-builder-pd",
   "version": "4.5.1",
   "description": "User-friendly query builder for React. Demo: https://ukrbublik.github.io/react-awesome-query-builder",
   "keywords": [
@@ -29,11 +29,11 @@
   "types": "modules/index.d.ts",
   "scripts": {
     "prepare": "npm run build-npm",
-    "for-npm": "./scripts/for-npm.sh",
-    "for-gpr": "./scripts/for-gpr.sh",
+    "for-npm": "cd scripts && bash for-npm.sh",
+    "for-gpr": "cd scripts && bash for-gpr.sh",
     "build-npm": "cd scripts && bash build-npm.sh",
     "check-hot": "node ./scripts/check-hot.js",
-    "build-global": "NODE_ENV=production COMPRESS=1 webpack",
+    "build-global": "cross-env NODE_ENV=production COMPRESS=1 webpack",
     "build": "npm run build-npm && npm run build-global",
     "build-examples": "cd examples && npm run build",
     "build-sandbox-ts": "cd sandbox && npm run build",
@@ -65,14 +65,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ukrbublik/react-awesome-query-builder.git"
+    "url": "https://github.com/phiduy/react-awesome-query-builder.git"
   },
   "author": "Denis Oblogin <ukrbublik@gmail.com> (https://github.com/ukrbublik)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ukrbublik/react-awesome-query-builder/issues"
+    "url": "https://github.com/phiduy/react-awesome-query-builder/issues"
   },
-  "homepage": "https://github.com/ukrbublik/react-awesome-query-builder",
+  "homepage": "https://github.com/phiduy/react-awesome-query-builder",
   "funding": "https://opencollective.com/react-awesome-query-builder",
   "engines": {
     "node": ">=12.13",
@@ -91,16 +91,16 @@
     "sqlstring": "^2.3.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.5",
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/plugin-proposal-decorators": "^7.15.4",
     "@babel/plugin-proposal-private-methods": "^7.14.5",
-    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
-    "@babel/plugin-transform-runtime": "^7.14.5",
-    "@babel/preset-env": "^7.14.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@hot-loader/react-dom": "^17.0.1",

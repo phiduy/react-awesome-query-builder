@@ -9,8 +9,8 @@ const BUILD = path.resolve(__dirname, 'build/');
 const MODULES = path.resolve(__dirname, 'modules/');
 const isCompress = process.env.COMPRESS == "1";
 const isAnalyze = process.env.ANALYZE == "1";
-const LibName = 'ReactAwesomeQueryBuilder';
-const lib_name = 'react-awesome-query-builder';
+const LibName = 'ReactAwesomeQueryBuilderPd';
+const lib_name = 'react-awesome-query-builder-pd';
 
 let plugins = [
     new webpack.DefinePlugin({

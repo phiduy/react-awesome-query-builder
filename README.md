@@ -46,7 +46,7 @@ Now [Material-UI](https://mui.com) v5 is now available!
 ## Getting started
 Install: 
 ```
-npm i react-awesome-query-builder-mui@v5 --save
+npm i react-awesome-query-builder --save
 ```
 
 For AntDesign widgets only:
