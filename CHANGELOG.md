@@ -1,4 +1,8 @@
 # Changelog
+- 4.5.5
+  - Fixed bug useConfirm not found
+- 4.5.4
+  - Upgrade material-ui-confirm to version 5
 - 4.5.3
   - Using makeStyles to style Slider wrapper
 - 4.5.2
