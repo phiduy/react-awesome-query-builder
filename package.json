@@ -1,6 +1,6 @@
 {
   "name": "react-awesome-query-builder-pd",
-  "version": "4.5.1",
+  "version": "4.5.3",
   "description": "User-friendly query builder for React. Demo: https://ukrbublik.github.io/react-awesome-query-builder",
   "keywords": [
     "query-builder",
@@ -84,6 +84,7 @@
     "clone": "^2.1.2",
     "immutable": "^3.8.2",
     "lodash": "^4.17.21",
+    "material-ui-confirm": "^3.0.1",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react-redux": "^7.2.5",

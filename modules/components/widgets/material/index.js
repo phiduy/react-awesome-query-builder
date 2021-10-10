@@ -1,9 +1,9 @@
 import React from "react"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
-import { defaultTheme } from "./theme"
-// import { ConfirmProvider, useConfirm } from "material-ui-confirm";
+import { ConfirmProvider, useConfirm } from "material-ui-confirm"
 import AdapterDateFns from "@mui/lab/AdapterDateFns"
 import LocalizationProvider from "@mui/lab/LocalizationProvider"
+import { defaultTheme } from "./theme"
 
 // value widgets
 import MaterialTextWidget from "./value/MaterialText"
@@ -42,7 +42,7 @@ const MaterialProvider = ({ config, children }) => {
   const withTheme = (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={locale}>
-        {base}
+        <ConfirmProvider>{base}</ConfirmProvider>
       </LocalizationProvider>
     </ThemeProvider>
   )
@@ -69,6 +69,6 @@ export default {
   MaterialConjs,
   MaterialValueSources,
   MaterialConfirm,
-  MaterialProvider
-  // MaterialUseConfirm: useConfirm, // in-progressing
+  MaterialProvider,
+  MaterialUseConfirm: useConfirm
 }

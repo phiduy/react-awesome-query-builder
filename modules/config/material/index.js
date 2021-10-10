@@ -1,7 +1,7 @@
-import MaterialWidgets from "../../components/widgets/material";
-import BasicConfig from "../basic";
-import React from "react";
-import {SqlString} from "../../utils/sql";
+import MaterialWidgets from "../../components/widgets/material"
+import BasicConfig from "../basic"
+import React from "react"
+import { SqlString } from "../../utils/sql"
 
 const {
   MaterialBooleanWidget,
@@ -25,9 +25,8 @@ const {
 
   MaterialProvider,
   MaterialConfirm,
-  // MaterialUseConfirm,
-} = MaterialWidgets;
-
+  MaterialUseConfirm
+} = MaterialWidgets
 
 const settings = {
   ...BasicConfig.settings,
@@ -41,59 +40,62 @@ const settings = {
   renderValueSources: (props) => <MaterialValueSources {...props} />,
   renderProvider: (props) => <MaterialProvider {...props} />,
   renderConfirm: MaterialConfirm,
-  useConfirm: () => null,
-};
-
+  useConfirm: MaterialUseConfirm
+}
 
 const widgets = {
   ...BasicConfig.widgets,
   text: {
     ...BasicConfig.widgets.text,
-    factory: (props) => <MaterialTextWidget {...props} />,
+    factory: (props) => <MaterialTextWidget {...props} />
   },
   textarea: {
     ...BasicConfig.widgets.textarea,
-    factory: (props) => <MaterialTextAreaWidget {...props} />,
+    factory: (props) => <MaterialTextAreaWidget {...props} />
   },
   number: {
     ...BasicConfig.widgets.number,
-    factory: (props) => <MaterialNumberWidget {...props} />,
+    factory: (props) => <MaterialNumberWidget {...props} />
   },
   multiselect: {
     ...BasicConfig.widgets.multiselect,
     factory: (props) => {
-      return (props.asyncFetch || props.showSearch) 
-        ? <MaterialAutocompleteWidget multiple {...props} /> 
-        : <MaterialMultiSelectWidget {...props} />;
-    },
+      return props.asyncFetch || props.showSearch ? (
+        <MaterialAutocompleteWidget multiple {...props} />
+      ) : (
+        <MaterialMultiSelectWidget {...props} />
+      )
+    }
   },
   select: {
     ...BasicConfig.widgets.select,
     factory: (props) => {
-      return (props.asyncFetch || props.showSearch) 
-        ? <MaterialAutocompleteWidget {...props} /> 
-        : <MaterialSelectWidget {...props} />;
-    },
+      return props.asyncFetch || props.showSearch ? (
+        <MaterialAutocompleteWidget {...props} />
+      ) : (
+        <MaterialSelectWidget {...props} />
+      )
+    }
   },
   slider: {
     ...BasicConfig.widgets.slider,
-    factory: (props) => <MaterialSliderWidget {...props} />,
+    factory: (props) => <MaterialSliderWidget {...props} />
   },
   boolean: {
     ...BasicConfig.widgets.boolean,
-    factory: (props) => <MaterialBooleanWidget {...props} />,
+    factory: (props) => <MaterialBooleanWidget {...props} />
   },
   date: {
     ...BasicConfig.widgets.date,
-    factory: (props) => <MaterialDateWidget {...props} />,
+    factory: (props) => <MaterialDateWidget {...props} />
   },
   time: {
     ...BasicConfig.widgets.time,
-    factory: (props) => <MaterialTimeWidget {...props} />,
+    factory: (props) => <MaterialTimeWidget {...props} />
   },
   datetime: {
     ...BasicConfig.widgets.datetime,
-    factory: (props) => <MaterialDateTimeWidget {...props} />,
+    factory: (props) => <MaterialDateTimeWidget {...props} />
   },
 
   rangeslider: {
@@ -105,19 +107,18 @@ const widgets = {
     valuePlaceholder: "Select range",
     valueLabels: [
       { label: "Number from", placeholder: "Enter number from" },
-      { label: "Number to", placeholder: "Enter number to" },
+      { label: "Number to", placeholder: "Enter number to" }
     ],
     formatValue: (val, fieldDef, wgtDef, isForDisplay) => {
-      return isForDisplay ? val : JSON.stringify(val);
+      return isForDisplay ? val : JSON.stringify(val)
     },
     sqlFormatValue: (val, fieldDef, wgtDef, op, opDef) => {
-      return SqlString.escape(val);
+      return SqlString.escape(val)
     },
     singleWidget: "slider",
-    toJS: (val, fieldSettings) => (val),
-  },
-};
-
+    toJS: (val, fieldSettings) => val
+  }
+}
 
 const types = {
   ...BasicConfig.types,
@@ -128,26 +129,21 @@ const types = {
       rangeslider: {
         opProps: {
           between: {
-            isSpecialRange: true,
+            isSpecialRange: true
           },
           not_between: {
-            isSpecialRange: true,
+            isSpecialRange: true
           }
         },
-        operators: [
-          "between",
-          "not_between",
-          "is_empty",
-          "is_not_empty",
-        ],
+        operators: ["between", "not_between", "is_empty", "is_not_empty"]
       }
-    },
-  },
-};
+    }
+  }
+}
 
 export default {
   ...BasicConfig,
   types,
   widgets,
-  settings,
-};
+  settings
+}

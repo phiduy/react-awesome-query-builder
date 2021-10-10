@@ -1,7 +1,10 @@
 # Changelog
+- 4.5.3
+  - Using makeStyles to style Slider wrapper
+- 4.5.2
+  - Fixed issue with slider styles
 - 4.5.1
   - Migrate Material widgets to v5
-  - Fixed issue with slider styles
 - 4.5.0
   - Added basic support of export to ElasticSearch (PR #469)
   - Export all helper funcs from configUtils (PR #493)
