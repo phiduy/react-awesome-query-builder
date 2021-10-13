@@ -17,7 +17,7 @@ export default (props) => {
   if (!value)
     dtValue = "";
   else
-    dtValue = moment(value).format("YYYY-MM-DDTHH:mm");
+    dtValue = moment(value).format("yyyy-mm-ddTHH:mm");
   
   return (
     <input type="datetime-local"  value={dtValue}  disabled={readonly} onChange={onChange} />

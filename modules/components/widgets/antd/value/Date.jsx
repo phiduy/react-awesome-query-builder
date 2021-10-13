@@ -30,8 +30,8 @@ export default class DateWidget extends PureComponent {
     }
 
     static defaultProps = {
-      dateFormat: "YYYY-MM-DD",
-      valueFormat: "YYYY-MM-DD",
+      dateFormat: "yyyy-mm-dd",
+      valueFormat: "yyyy-mm-dd",
     };
 
     isValidSingleValue = (value) => {

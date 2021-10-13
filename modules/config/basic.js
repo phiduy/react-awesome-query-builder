@@ -599,8 +599,8 @@ const widgets = {
     jsType: "string",
     valueSrc: "value",
     factory: (props) => <VanillaDateWidget {...props} />,
-    dateFormat: "DD.MM.YYYY",
-    valueFormat: "YYYY-MM-DD",
+    dateFormat: "dd.mm.yyyy",
+    valueFormat: "yyyy-mm-dd",
     useKeyboard: true,
     valueLabel: "Date",
     valuePlaceholder: "Enter date",
@@ -614,7 +614,7 @@ const widgets = {
     },
     sqlFormatValue: (val, fieldDef, wgtDef, op, opDef) => {
       const dateVal = moment(val, wgtDef.valueFormat);
-      return SqlString.escape(dateVal.format("YYYY-MM-DD"));
+      return SqlString.escape(dateVal.format("yyyy-mm-dd"));
     },
     jsonLogic: (val, fieldDef, wgtDef) => moment(val, wgtDef.valueFormat).toDate(),
     toJS: (val, fieldSettings) => {
@@ -684,8 +684,8 @@ const widgets = {
     valueSrc: "value",
     factory: (props) => <VanillaDateTimeWidget {...props} />,
     timeFormat: "HH:mm",
-    dateFormat: "DD.MM.YYYY",
-    valueFormat: "YYYY-MM-DD HH:mm:ss",
+    dateFormat: "dd.mm.yyyy",
+    valueFormat: "yyyy-mm-dd HH:mm:ss",
     use12Hours: false,
     useKeyboard: true,
     valueLabel: "Datetime",

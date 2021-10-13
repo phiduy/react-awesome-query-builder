@@ -32,8 +32,8 @@ export default class DateTimeWidget extends PureComponent {
 
     static defaultProps = {
       timeFormat: "HH:mm",
-      dateFormat: "YYYY-MM-DD",
-      valueFormat: "YYYY-MM-DD HH:mm:ss",
+      dateFormat: "yyyy-mm-dd",
+      valueFormat: "yyyy-mm-dd HH:mm:ss",
       use12Hours: false,
     };
 

@@ -1,61 +1,69 @@
-import React, {Component} from "react";
-import merge from "lodash/merge";
+import React, { Component } from "react"
+import merge from "lodash/merge"
 import {
-  BasicConfig, BasicFuncs, Utils,
+  BasicConfig,
+  BasicFuncs,
+  Utils,
   // types:
-  Operators, Widgets, Fields, Config, Types, Conjunctions, Settings, LocaleSettings, OperatorProximity, Funcs, 
-  DateTimeFieldSettings,
-} from "react-awesome-query-builder";
-import moment from "moment";
-import ru_RU from "antd/lib/locale-provider/ru_RU";
-import { viVN } from "@mui/material/locale";
+  Operators,
+  Widgets,
+  Fields,
+  Config,
+  Types,
+  Conjunctions,
+  Settings,
+  LocaleSettings,
+  OperatorProximity,
+  Funcs,
+  DateTimeFieldSettings
+} from "react-awesome-query-builder"
+import moment from "moment"
+import ru_RU from "antd/lib/locale-provider/ru_RU"
+import { viVN } from "@mui/material/locale"
+import viLocale from "date-fns/locale/vi"
 
-import AntdConfig from "react-awesome-query-builder/config/antd";
-import AntdWidgets from "react-awesome-query-builder/components/widgets/antd";
-import MaterialConfig from "react-awesome-query-builder/config/material";
-const {
-  FieldSelect,
-  FieldDropdown,
-  FieldCascader,
-  FieldTreeSelect,
-} = AntdWidgets;
-const {simulateAsyncFetch} = Utils;
+import AntdConfig from "react-awesome-query-builder/config/antd"
+import AntdWidgets from "react-awesome-query-builder/components/widgets/antd"
+import MaterialConfig from "react-awesome-query-builder/config/material"
+const { FieldSelect, FieldDropdown, FieldCascader, FieldTreeSelect } =
+  AntdWidgets
+const { simulateAsyncFetch } = Utils
 
 const skinToConfig: Record<string, Config> = {
   vanilla: BasicConfig,
   antd: AntdConfig,
-  material: MaterialConfig,
-};
+  material: MaterialConfig
+}
 
 export default (skin: string) => {
-  const InitialConfig = skinToConfig[skin] as BasicConfig;
+  const InitialConfig = skinToConfig[skin] as BasicConfig
 
   const demoListValues = [
-    {title: "A", value: "a"},
-    {title: "AA", value: "aa"},
-    {title: "AAA1", value: "aaa1"},
-    {title: "AAA2", value: "aaa2"},
-    {title: "B", value: "b"},
-    {title: "C", value: "c"},
-    {title: "D", value: "d"},
-    {title: "E", value: "e"},
-    {title: "F", value: "f"},
-    {title: "G", value: "g"},
-    {title: "H", value: "h"},
-    {title: "I", value: "i"},
-    {title: "J", value: "j"},
-  ];
-  const simulatedAsyncFetch = simulateAsyncFetch(demoListValues, 3);
+    { title: "A", value: "a" },
+    { title: "AA", value: "aa" },
+    { title: "AAA1", value: "aaa1" },
+    { title: "AAA2", value: "aaa2" },
+    { title: "B", value: "b" },
+    { title: "C", value: "c" },
+    { title: "D", value: "d" },
+    { title: "E", value: "e" },
+    { title: "F", value: "f" },
+    { title: "G", value: "g" },
+    { title: "H", value: "h" },
+    { title: "I", value: "i" },
+    { title: "J", value: "j" }
+  ]
+  const simulatedAsyncFetch = simulateAsyncFetch(demoListValues, 3)
 
   const conjunctions: Conjunctions = {
-    ...InitialConfig.conjunctions,
-  };
+    ...InitialConfig.conjunctions
+  }
 
   const proximity: OperatorProximity = {
     ...InitialConfig.operators.proximity,
     valueLabels: [
       { label: "Word 1", placeholder: "Enter first word" },
-      { label: "Word 2", placeholder: "Enter second word" },
+      { label: "Word 2", placeholder: "Enter second word" }
     ],
     textSeparators: [
       //'Word 1',
@@ -73,7 +81,7 @@ export default (skin: string) => {
       },
       customProps: {}
     }
-  };
+  }
 
   const operators: Operators = {
     ...InitialConfig.operators,
@@ -81,17 +89,10 @@ export default (skin: string) => {
     proximity,
     between: {
       ...InitialConfig.operators.between,
-      valueLabels: [
-        "Value from",
-        "Value to"
-      ],
-      textSeparators: [
-        "from",
-        "to"
-      ],
-    },
-  };
-
+      valueLabels: ["Value from", "Value to"],
+      textSeparators: ["from", "to"]
+    }
+  }
 
   const widgets: Widgets = {
     ...InitialConfig.widgets,
@@ -111,19 +112,19 @@ export default (skin: string) => {
     },
     date: {
       ...InitialConfig.widgets.date,
-      dateFormat: "DD.MM.YYYY",
-      valueFormat: "YYYY-MM-DD",
+      dateFormat: "dd.mm.yyyy",
+      valueFormat: "yyyy-mm-dd"
     },
     time: {
       ...InitialConfig.widgets.time,
       timeFormat: "HH:mm",
-      valueFormat: "HH:mm:ss",
+      valueFormat: "HH:mm:ss"
     },
     datetime: {
       ...InitialConfig.widgets.datetime,
       timeFormat: "HH:mm",
-      dateFormat: "DD.MM.YYYY",
-      valueFormat: "YYYY-MM-DD HH:mm:ss",
+      dateFormat: "dd.mm.yyyy",
+      valueFormat: "yyyy-mm-dd HH:MM:ss"
     },
     func: {
       ...InitialConfig.widgets.func,
@@ -132,7 +133,7 @@ export default (skin: string) => {
       }
     },
     select: {
-      ...InitialConfig.widgets.select,
+      ...InitialConfig.widgets.select
     },
     multiselect: {
       ...InitialConfig.widgets.multiselect,
@@ -149,9 +150,8 @@ export default (skin: string) => {
       customProps: {
         showSearch: true
       }
-    },
-  };
-
+    }
+  }
 
   const types: Types = {
     ...InitialConfig.types,
@@ -171,17 +171,16 @@ export default (skin: string) => {
               label: "is not"
             }
           }
-        },
-      },
-    }),
-  };
-
+        }
+      }
+    })
+  }
 
   const localeSettings: LocaleSettings = {
     locale: {
       moment: "ru",
       antd: ru_RU,
-      material: viVN,
+      material: viLocale
     },
     valueLabel: "Value",
     valuePlaceholder: "Value",
@@ -201,14 +200,14 @@ export default (skin: string) => {
     removeRuleConfirmOptions: {
       title: "Are you sure delete this rule?",
       okText: "Yes",
-      okType: "danger",
+      okType: "danger"
     },
     removeGroupConfirmOptions: {
       title: "Are you sure delete this group?",
       okText: "Yes",
-      okType: "danger",
-    },
-  };
+      okType: "danger"
+    }
+  }
 
   const settings: Settings = {
     ...InitialConfig.settings,
@@ -225,11 +224,11 @@ export default (skin: string) => {
       },
       field: {
         label: "Field",
-        widget: "field",
+        widget: "field"
       },
       func: {
         label: "Function",
-        widget: "func",
+        widget: "func"
       }
     },
     // canReorder: true,
@@ -238,12 +237,12 @@ export default (skin: string) => {
     // showLabels: true,
     maxNesting: 5,
     canLeaveEmptyGroup: true,
-    showErrorMessage: true,
+    showErrorMessage: true
     // renderField: (props) => <FieldCascader {...props} />,
     // renderOperator: (props) => <FieldDropdown {...props} />,
     // renderFunc: (props) => <FieldSelect {...props} />,
     // maxNumberOfRules: 10 // number of rules can be added to the query builder
-  };
+  }
 
   //////////////////////////////////////////////////////////////////////
 
@@ -259,13 +258,13 @@ export default (skin: string) => {
           excludeOperators: ["proximity"],
           fieldSettings: {
             validateValue: (val: string, fieldSettings) => {
-              return (val.length < 10);
-            },
+              return val.length < 10
+            }
           },
           mainWidgetProps: {
             valueLabel: "Name",
-            valuePlaceholder: "Enter name",
-          },
+            valuePlaceholder: "Enter name"
+          }
         },
         login: {
           type: "text",
@@ -273,13 +272,16 @@ export default (skin: string) => {
           excludeOperators: ["proximity"],
           fieldSettings: {
             validateValue: (val: string, fieldSettings) => {
-              return (val.length < 10 && (val === "" || val.match(/^[A-Za-z0-9_-]+$/) !== null));
-            },
+              return (
+                val.length < 10 &&
+                (val === "" || val.match(/^[A-Za-z0-9_-]+$/) !== null)
+              )
+            }
           },
           mainWidgetProps: {
             valueLabel: "Login",
-            valuePlaceholder: "Enter login",
-          },
+            valuePlaceholder: "Enter login"
+          }
         }
       }
     },
@@ -288,7 +290,7 @@ export default (skin: string) => {
       type: "text",
       preferWidgets: ["textarea"],
       fieldSettings: {
-        maxLength: 1000,
+        maxLength: 1000
       }
     },
     results: {
@@ -298,17 +300,17 @@ export default (skin: string) => {
         product: {
           type: "select",
           fieldSettings: {
-            listValues: ["abc", "def", "xyz"],
+            listValues: ["abc", "def", "xyz"]
           },
-          valueSources: ["value"],
+          valueSources: ["value"]
         },
         score: {
           type: "number",
           fieldSettings: {
             min: 0,
-            max: 100,
+            max: 100
           },
-          valueSources: ["value"],
+          valueSources: ["value"]
         }
       }
     },
@@ -332,7 +334,7 @@ export default (skin: string) => {
         // w/o operand
         "some",
         "all",
-        "none",
+        "none"
       ],
       defaultOperator: "some",
       initialEmptyWhere: true, // if default operator is not in config.settings.groupOperators, true - to set no children, false - to add 1 empty
@@ -341,17 +343,17 @@ export default (skin: string) => {
         vendor: {
           type: "select",
           fieldSettings: {
-            listValues: ["Ford", "Toyota", "Tesla"],
+            listValues: ["Ford", "Toyota", "Tesla"]
           },
-          valueSources: ["value"],
+          valueSources: ["value"]
         },
         year: {
           type: "number",
           fieldSettings: {
             min: 1990,
-            max: 2020,
+            max: 2020
           },
-          valueSources: ["value"],
+          valueSources: ["value"]
         }
       }
     },
@@ -359,7 +361,7 @@ export default (skin: string) => {
       label: "prox",
       tooltip: "Proximity search",
       type: "text",
-      operators: ["proximity"],
+      operators: ["proximity"]
     },
     num: {
       label: "Number",
@@ -369,7 +371,7 @@ export default (skin: string) => {
         min: -1,
         max: 5
       },
-      funcs: ["LINEAR_REGRESSION"],
+      funcs: ["LINEAR_REGRESSION"]
     },
     slider: {
       label: "Slider",
@@ -385,25 +387,25 @@ export default (skin: string) => {
           100: <strong>100%</strong>
         },
         validateValue: (val, fieldSettings) => {
-          return (val < 50 ? null : "Invalid slider value, see validateValue()");
-        },
+          return val < 50 ? null : "Invalid slider value, see validateValue()"
+        }
       },
       //overrides
       widgets: {
         slider: {
           widgetProps: {
-            valuePlaceholder: "..Slider",
+            valuePlaceholder: "..Slider"
           }
         },
         rangeslider: {
           widgetProps: {
             valueLabels: [
               { label: "Number from", placeholder: "from" },
-              { label: "Number to", placeholder: "to" },
-            ],
+              { label: "Number to", placeholder: "to" }
+            ]
           }
-        },
-      },
+        }
+      }
     },
     date: {
       label: "Date",
@@ -413,16 +415,18 @@ export default (skin: string) => {
         dateFormat: "DD-MM-YYYY",
         validateValue: (val, fieldSettings: DateTimeFieldSettings) => {
           // example of date validation
-          const dateVal = moment(val, fieldSettings.valueFormat);
-          return dateVal.year() != (new Date().getFullYear()) ? "Please use current year" : null;
-        },
-      },
+          const dateVal = moment(val, fieldSettings.valueFormat)
+          return dateVal.year() != new Date().getFullYear()
+            ? "Please use current year"
+            : null
+        }
+      }
     },
     time: {
       label: "Time",
       type: "time",
       valueSources: ["value"],
-      defaultOperator: "between",
+      defaultOperator: "between"
     },
     datetime: {
       label: "DateTime",
@@ -451,8 +455,8 @@ export default (skin: string) => {
           { value: "yellow", title: "Yellow" },
           { value: "green", title: "Green" },
           { value: "orange", title: "Orange" }
-        ],
-      },
+        ]
+      }
     },
     color2: {
       label: "Color2",
@@ -463,7 +467,7 @@ export default (skin: string) => {
           green: "Green",
           orange: "Orange",
           purple: "Purple"
-        },
+        }
       }
     },
     multicolor: {
@@ -476,7 +480,7 @@ export default (skin: string) => {
           green: "Green",
           orange: "Orange"
         },
-        allowCustomValues: true,
+        allowCustomValues: true
       }
     },
     selecttree: {
@@ -508,8 +512,8 @@ export default (skin: string) => {
           { value: "5", title: "Green", parent: "4" },
           { value: "6", title: "Blue", parent: "4" },
           { value: "7", title: "Sub blue", parent: "6" },
-          { value: "8", title: "Sub sub blue and a long text", parent: "7" },
-        ],
+          { value: "8", title: "Sub sub blue and a long text", parent: "7" }
+        ]
       }
     },
     multiselecttree: {
@@ -518,18 +522,34 @@ export default (skin: string) => {
       fieldSettings: {
         treeExpandAll: true,
         listValues: [
-          { value: "1", title: "Warm colors", children: [
-            { value: "2", title: "Red" },
-            { value: "3", title: "Orange" }
-          ] },
-          { value: "4", title: "Cool colors", children: [
-            { value: "5", title: "Green" },
-            { value: "6", title: "Blue", children: [
-              { value: "7", title: "Sub blue", children: [
-                { value: "8", title: "Sub sub blue and a long text" }
-              ] }
-            ] }
-          ] }
+          {
+            value: "1",
+            title: "Warm colors",
+            children: [
+              { value: "2", title: "Red" },
+              { value: "3", title: "Orange" }
+            ]
+          },
+          {
+            value: "4",
+            title: "Cool colors",
+            children: [
+              { value: "5", title: "Green" },
+              {
+                value: "6",
+                title: "Blue",
+                children: [
+                  {
+                    value: "7",
+                    title: "Sub blue",
+                    children: [
+                      { value: "8", title: "Sub sub blue and a long text" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
         ]
       }
     },
@@ -543,7 +563,7 @@ export default (skin: string) => {
         useLoadMore: true,
         forceAsyncSearch: false,
         allowCustomValues: false
-      },
+      }
     },
     stock: {
       label: "In stock",
@@ -553,15 +573,14 @@ export default (skin: string) => {
         labelYes: "+",
         labelNo: "-"
       }
-    },
-  };
+    }
+  }
 
   //////////////////////////////////////////////////////////////////////
 
   const funcs: Funcs = {
     ...BasicFuncs
-  };
-
+  }
 
   const config: Config = {
     conjunctions,
@@ -570,9 +589,8 @@ export default (skin: string) => {
     types,
     settings,
     fields,
-    funcs,
-  };
+    funcs
+  }
 
-  return config;
-};
-
+  return config
+}

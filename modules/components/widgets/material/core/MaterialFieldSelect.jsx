@@ -1,60 +1,70 @@
-import React from "react";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import ListSubheader from "@mui/material/ListSubheader";
-import FormControl from "@mui/material/FormControl";
+import React from "react"
+import Select from "@mui/material/Select"
+import MenuItem from "@mui/material/MenuItem"
+import ListSubheader from "@mui/material/ListSubheader"
+import FormControl from "@mui/material/FormControl"
+import InputLabel from "@mui/material/InputLabel"
 
-export default ({items, setField, selectedKey, readonly, placeholder}) => {
-  const renderOptions = (fields, level = 0) => (
-    Object.keys(fields).map(fieldKey => {
-      const field = fields[fieldKey];
-      const {items, path, label, disabled} = field;
-      const prefix = "\u00A0\u00A0".repeat(level);
+export default (props) => {
+  const { items, setField, selectedKey, readonly, placeholder } = props
+
+  const renderOptions = (fields, level = 0) =>
+    Object.keys(fields).map((fieldKey) => {
+      const field = fields[fieldKey]
+      const { items, path, label, disabled } = field
+      const prefix = "\u00A0\u00A0".repeat(level)
       if (items) {
         return [
-          <ListSubheader disabled={disabled} key={path} disableSticky={true}>{label}</ListSubheader>,
-          renderOptions(items, level+1),
-        ];
+          <ListSubheader disabled={disabled} key={path} disableSticky={true}>
+            {label}
+          </ListSubheader>,
+          renderOptions(items, level + 1)
+        ]
       } else {
-        return <MenuItem disabled={disabled} key={path} value={path}>
-          {prefix && <span>{prefix}</span>}
-          {label}
-        </MenuItem>;
+        return (
+          <MenuItem disabled={disabled} key={path} value={path}>
+            {prefix && <span>{prefix}</span>}
+            {label}
+          </MenuItem>
+        )
       }
     })
-  );
 
-  const onChange = e => {
-    if (e.target.value === undefined)
-      return;
-    setField(e.target.value);
-  };
+  const onChange = (e) => {
+    if (e.target.value === undefined) return
+    setField(e.target.value)
+  }
 
   const renderValue = (selectedValue) => {
-    if (!readonly && !selectedValue)
-      return placeholder;
+    if (!readonly && !selectedValue) return placeholder
     const findLabel = (fields) => {
-      return fields.map(field => {
-        if(!field.items) return field.path === selectedValue ? field.label : null;
-        return findLabel(field.items);
-      });
-    };
-    return findLabel(items).filter((v) => {
-      if (Array.isArray(v)) {
-        return v.some((value) => value !== null);
-      } else {
-        return v !== null;
-      }
-    }).pop();
-  };
-  
-  const hasValue = selectedKey != null;
+      return fields.map((field) => {
+        if (!field.items)
+          return field.path === selectedValue ? field.label : null
+        return findLabel(field.items)
+      })
+    }
+    return findLabel(items)
+      .filter((v) => {
+        if (Array.isArray(v)) {
+          return v.some((value) => value !== null)
+        } else {
+          return v !== null
+        }
+      })
+      .pop()
+  }
+
+  const hasValue = selectedKey != null
   return (
     <FormControl>
+      <InputLabel id="select-field-label">
+        {readonly ? placeholder : ""}
+      </InputLabel>
       <Select
         autoWidth
         displayEmpty
-        label={placeholder}
+        labelId="select-field-label"
         onChange={onChange}
         value={hasValue ? selectedKey : ""}
         disabled={readonly}
@@ -63,5 +73,5 @@ export default ({items, setField, selectedKey, readonly, placeholder}) => {
         {renderOptions(items)}
       </Select>
     </FormControl>
-  );
-};
+  )
+}

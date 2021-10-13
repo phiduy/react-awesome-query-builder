@@ -1,33 +1,55 @@
-import React from "react";
-import { DateTimePicker, MobileDateTimePicker } from "@mui/lab";
-import FormControl from "@mui/material/FormControl";
+import React, { useState, useEffect } from "react"
+import FormControl from "@mui/material/FormControl"
+import TextField from "@mui/material/TextField"
+import DateTimePicker from "@mui/lab/DateTimePicker"
+import { isValid, format, toDate, parse, isEqual } from "date-fns"
 
 export default (props) => {
-  const {value, setValue, use12Hours, readonly, placeholder, dateFormat, timeFormat, valueFormat, customProps, useKeyboard} = props;
+  const {
+    value,
+    setValue,
+    use12Hours,
+    readonly,
+    dateFormat,
+    timeFormat,
+    valueFormat,
+    customProps,
+    useKeyboard
+  } = props
+
+  const dateTimeFormat = dateFormat + " " + timeFormat
+  const [currentDateTime, setDateTime] = useState(new Date())
 
   const formatSingleValue = (value) => {
-    return value && value.isValid() ? value.format(valueFormat) : undefined;
-  };
+    return value && isValid(value) ? format(value, valueFormat) : undefined
+  }
 
   const handleChange = (value) => {
-    setValue(formatSingleValue(value));
-  };
+    setDateTime(value)
+    setValue(formatSingleValue(value))
+  }
 
-  const Picker = useKeyboard ? MobileDateTimePicker : DateTimePicker;
-  const dateTimeFormat = dateFormat + " " + timeFormat;
-  
+  useEffect(() => {
+    if (value) {
+      const nextValue = parse(value, valueFormat, new Date())
+      if (!isEqual(nextValue, currentDateTime)) {
+        setDateTime(nextValue)
+      }
+    }
+  }, [value])
+
   return (
     <FormControl>
-      <Picker
+      <DateTimePicker
         readOnly={readonly}
         disabled={readonly}
+        value={currentDateTime}
         ampm={!!use12Hours}
-        placeholder={!readonly ? placeholder : ""}
         format={dateTimeFormat}
-        value={value || null}
         onChange={handleChange}
+        renderInput={(props) => <TextField {...props} />}
         {...customProps}
       />
     </FormControl>
-  );
-};
+  )
+}

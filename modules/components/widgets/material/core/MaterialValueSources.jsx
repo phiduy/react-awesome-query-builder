@@ -74,7 +74,7 @@ export default ({ valueSources, valueSrc, title, setValueSrc, readonly }) => {
         disablePortal
       >
         <FormControl component="fieldset">
-          <FormLabel component="legend">{title}</FormLabel>
+          {title && <FormLabel component="legend">{title}</FormLabel>}
           <RadioGroup value={valueSrc || "value"} onChange={handleChange}>
             {renderOptions(valueSources)}
           </RadioGroup>

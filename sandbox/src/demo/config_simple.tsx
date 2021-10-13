@@ -237,8 +237,8 @@ const widgets: Widgets = {
   },
   date: {
     ...InitialConfig.widgets.date,
-    dateFormat: "DD.MM.YYYY",
-    valueFormat: "YYYY-MM-DD",
+    dateFormat: "dd.mm.yyyy",
+    valueFormat: "yyyy-mm-dd",
   },
   time: {
     ...InitialConfig.widgets.time,
@@ -248,8 +248,8 @@ const widgets: Widgets = {
   datetime: {
     ...InitialConfig.widgets.datetime,
     timeFormat: "HH:mm",
-    dateFormat: "DD.MM.YYYY",
-    valueFormat: "YYYY-MM-DD HH:mm:ss",
+    dateFormat: "dd.mm.yyyy",
+    valueFormat: "yyyy-mm-dd HH:mm:ss",
   },
   treeselect: {
     ...InitialConfig.widgets.treeselect,
