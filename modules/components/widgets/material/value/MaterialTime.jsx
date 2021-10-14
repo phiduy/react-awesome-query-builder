@@ -19,7 +19,9 @@ export default (props) => {
   } = props
 
   const formatSingleValue = (value) => {
-    return value && value.isValid() ? value.format(valueFormat) : undefined
+    return value && moment(value).isValid()
+      ? moment(value).format(valueFormat)
+      : undefined
   }
 
   const handleChange = (value) => {

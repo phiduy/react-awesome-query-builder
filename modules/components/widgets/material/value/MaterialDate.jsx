@@ -3,6 +3,7 @@ import DesktopDatePicker from "@mui/lab/DesktopDatePicker"
 import MobileDatePicker from "@mui/lab/MobileDatePicker"
 import TextField from "@mui/material/TextField"
 import FormControl from "@mui/material/FormControl"
+import moment from "moment"
 
 export default (props) => {
   const {
@@ -17,7 +18,9 @@ export default (props) => {
   } = props
 
   const formatSingleValue = (value) => {
-    return value && value.isValid() ? value.format(valueFormat) : undefined
+    return value && moment(value).isValid()
+      ? moment(value).format(valueFormat)
+      : undefined
   }
 
   const handleChange = (value) => {
