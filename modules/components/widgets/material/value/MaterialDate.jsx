@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from "react"
 import { MobileDatePicker, DatePicker } from "@mui/lab"
 import TextField from "@mui/material/TextField"
 import FormControl from "@mui/material/FormControl"
-import { isValid, format, toDate, parse, isEqual } from "date-fns"
+import moment from "moment"
 
 export default (props) => {
   const {
@@ -15,10 +15,12 @@ export default (props) => {
     placeholder,
     useKeyboard
   } = props
-  const [currentDate, setDate] = useState(new Date())
+  const [currentDate, setDate] = useState(null)
 
   const formatSingleValue = (value) => {
-    return value && isValid(value) ? format(value, valueFormat) : undefined
+    return value && moment(value).isValid()
+      ? moment(value).format(valueFormat)
+      : undefined
   }
 
   const handleChange = (value) => {
@@ -27,10 +29,11 @@ export default (props) => {
   }
 
   useEffect(() => {
+    console.log(dateFormat)
     if (value) {
-      const nextValue = parse(value, valueFormat, new Date())
-      if (!isEqual(nextValue, currentDate)) {
-        setDate(nextValue)
+      console.log(value)
+      if (currentDate && !moment(value).isSame(currentDate)) {
+        setDate(moment(value))
       }
     }
   }, [value])
@@ -40,7 +43,7 @@ export default (props) => {
       <DatePicker
         readOnly={readonly}
         disabled={readonly}
-        format={dateFormat}
+        inputFormat={dateFormat}
         value={currentDate}
         onChange={handleChange}
         renderInput={(params) => <TextField {...params} />}

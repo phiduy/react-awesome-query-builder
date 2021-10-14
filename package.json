@@ -1,6 +1,6 @@
 {
   "name": "react-awesome-query-builder-pd",
-  "version": "4.5.6",
+  "version": "4.5.7",
   "description": "User-friendly query builder for React. Demo: https://ukrbublik.github.io/react-awesome-query-builder",
   "keywords": [
     "query-builder",
@@ -128,7 +128,6 @@
     "compression-webpack-plugin": "^8.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",
-    "date-fns": "^2.25.0",
     "dayjs": "^1.10.5",
     "enzyme": "^3.11.0",
     "eslint": "^7.28.0",

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import FormControl from "@mui/material/FormControl"
 import TextField from "@mui/material/TextField"
 import DateTimePicker from "@mui/lab/DateTimePicker"
-import { isValid, format, toDate, parse, isEqual } from "date-fns"
+import moment from "moment"
 
 export default (props) => {
   const {
@@ -21,7 +21,9 @@ export default (props) => {
   const [currentDateTime, setDateTime] = useState(new Date())
 
   const formatSingleValue = (value) => {
-    return value && isValid(value) ? format(value, valueFormat) : undefined
+    return value && moment(value).isValid()
+      ? moment(value).format(valueFormat)
+      : undefined
   }
 
   const handleChange = (value) => {
@@ -31,9 +33,9 @@ export default (props) => {
 
   useEffect(() => {
     if (value) {
-      const nextValue = parse(value, valueFormat, new Date())
-      if (!isEqual(nextValue, currentDateTime)) {
-        setDateTime(nextValue)
+      console.log(value)
+      if (currentDateTime && !moment(value).isSame(currentDateTime)) {
+        setDateTime(moment(value))
       }
     }
   }, [value])
@@ -45,7 +47,7 @@ export default (props) => {
         disabled={readonly}
         value={currentDateTime}
         ampm={!!use12Hours}
-        format={dateTimeFormat}
+        inputFormat={dateTimeFormat}
         onChange={handleChange}
         renderInput={(props) => <TextField {...props} />}
         {...customProps}

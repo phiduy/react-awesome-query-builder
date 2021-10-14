@@ -20,7 +20,6 @@ import {
 import moment from "moment"
 import ru_RU from "antd/lib/locale-provider/ru_RU"
 import { viVN } from "@mui/material/locale"
-import viLocale from "date-fns/locale/vi"
 
 import AntdConfig from "react-awesome-query-builder/config/antd"
 import AntdWidgets from "react-awesome-query-builder/components/widgets/antd"
@@ -112,8 +111,8 @@ export default (skin: string) => {
     },
     date: {
       ...InitialConfig.widgets.date,
-      dateFormat: "dd.mm.yyyy",
-      valueFormat: "yyyy-mm-dd"
+      dateFormat: "dd/MM/yyyy",
+      valueFormat: "YYYY-MM-DD"
     },
     time: {
       ...InitialConfig.widgets.time,
@@ -123,8 +122,8 @@ export default (skin: string) => {
     datetime: {
       ...InitialConfig.widgets.datetime,
       timeFormat: "HH:mm",
-      dateFormat: "dd.mm.yyyy",
-      valueFormat: "yyyy-mm-dd HH:MM:ss"
+      dateFormat: "dd.MM.yyyy",
+      valueFormat: "yyyy-MM-dd HH:MM:ss"
     },
     func: {
       ...InitialConfig.widgets.func,
@@ -177,11 +176,6 @@ export default (skin: string) => {
   }
 
   const localeSettings: LocaleSettings = {
-    locale: {
-      moment: "ru",
-      antd: ru_RU,
-      material: viLocale
-    },
     valueLabel: "Value",
     valuePlaceholder: "Value",
     fieldLabel: "Field",
@@ -412,7 +406,7 @@ export default (skin: string) => {
       type: "date",
       valueSources: ["value"],
       fieldSettings: {
-        dateFormat: "DD-MM-YYYY",
+        dateFormat: "dd/MM/yyyy",
         validateValue: (val, fieldSettings: DateTimeFieldSettings) => {
           // example of date validation
           const dateVal = moment(val, fieldSettings.valueFormat)
