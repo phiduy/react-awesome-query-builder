@@ -1,7 +1,8 @@
 import React from "react"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { ConfirmProvider, useConfirm } from "material-ui-confirm"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
+// import AdapterDateFns from "@mui/lab/AdapterDateFns"
+import MomentUtils from "@date-io/moment";
 import LocalizationProvider from "@mui/lab/LocalizationProvider"
 import { defaultTheme } from "./theme"
 
@@ -41,7 +42,7 @@ const MaterialProvider = ({ config, children }) => {
   const base = <div className="mui">{children}</div>
   const withTheme = (
     <ThemeProvider theme={theme}>
-      <LocalizationProvider dateAdapter={AdapterDateFns} locale={locale}>
+      <LocalizationProvider dateAdapter={MomentUtils} locale={locale}>
         <ConfirmProvider>{base}</ConfirmProvider>
       </LocalizationProvider>
     </ThemeProvider>

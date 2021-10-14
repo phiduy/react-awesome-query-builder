@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useEffect } from "react"
+import React from "react"
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker"
+import MobileDatePicker from "@mui/lab/MobileDatePicker"
 import TextField from "@mui/material/TextField"
 import FormControl from "@mui/material/FormControl"
-import moment from "moment"
 
 export default (props) => {
   const {
@@ -15,34 +15,24 @@ export default (props) => {
     placeholder,
     useKeyboard
   } = props
-  const [currentDate, setDate] = useState(null)
 
   const formatSingleValue = (value) => {
-    return value && moment(value).isValid()
-      ? moment(value).format(valueFormat)
-      : undefined
+    return value && value.isValid() ? value.format(valueFormat) : undefined
   }
 
   const handleChange = (value) => {
-    setDate(value)
     setValue(formatSingleValue(value))
   }
 
-  useEffect(() => {
-    if (value) {
-      if (currentDate && !moment(value).isSame(currentDate)) {
-        setDate(moment(value))
-      }
-    }
-  }, [value])
+  const Picker = useKeyboard ? DesktopDatePicker : MobileDatePicker
 
   return (
     <FormControl>
-      <DesktopDatePicker
+      <Picker
         readOnly={readonly}
         disabled={readonly}
         inputFormat={dateFormat}
-        value={currentDate}
+        value={value || null}
         onChange={handleChange}
         renderInput={(params) => <TextField {...params} />}
         {...customProps}

@@ -111,7 +111,7 @@ export default (skin: string) => {
     },
     date: {
       ...InitialConfig.widgets.date,
-      dateFormat: "dd/MM/yyyy",
+      dateFormat: "DD/MM/yyyy",
       valueFormat: "YYYY-MM-DD"
     },
     time: {
@@ -406,7 +406,7 @@ export default (skin: string) => {
       type: "date",
       valueSources: ["value"],
       fieldSettings: {
-        dateFormat: "dd/MM/yyyy",
+        dateFormat: "DD/MM/yyyy",
         validateValue: (val, fieldSettings: DateTimeFieldSettings) => {
           // example of date validation
           const dateVal = moment(val, fieldSettings.valueFormat)
