@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react"
-import { DatePicker } from "@mui/lab"
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker"
 import TextField from "@mui/material/TextField"
 import FormControl from "@mui/material/FormControl"
 import moment from "moment"
@@ -38,7 +38,7 @@ export default (props) => {
 
   return (
     <FormControl>
-      <DatePicker
+      <DesktopDatePicker
         readOnly={readonly}
         disabled={readonly}
         inputFormat={dateFormat}
