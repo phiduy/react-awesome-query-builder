@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react"
-import { MobileDatePicker, DatePicker } from "@mui/lab"
+import { DatePicker } from "@mui/lab"
 import TextField from "@mui/material/TextField"
 import FormControl from "@mui/material/FormControl"
 import moment from "moment"
@@ -29,9 +29,7 @@ export default (props) => {
   }
 
   useEffect(() => {
-    console.log(dateFormat)
     if (value) {
-      console.log(value)
       if (currentDate && !moment(value).isSame(currentDate)) {
         setDate(moment(value))
       }
